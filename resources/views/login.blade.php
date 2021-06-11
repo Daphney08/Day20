@@ -65,9 +65,13 @@
                                 <input type="submit" value="Login" class="btn float-right login_btn">
                             </div>
                         </form>
-                   
-                   
-            
+                        <div class="d-flex justify-content-end social_icon">
+                            <span><i class="fab fa-facebook-square"></i></span>
+                            <span><i class="fab fa-google-plus-square"></i></span>
+                            <span><i class="fab fa-twitter-square"></i></span>
+                        </div>
+
+
                     </div>
                 </div>
         </div>

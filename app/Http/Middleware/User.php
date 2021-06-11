@@ -16,6 +16,9 @@ class User
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!Auth::check()){
+            return Redirect::route('login');
+        }
         return $next($request);
     }
 }
