@@ -3,31 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\NewMessageSent;
+
+// use\App\Models\User;
+// use\App\Models\Message;
+// use Redirect, Storage, Auth;
 
 class ChatController extends Controller
 {
-    public function chat()
-        {
-            $data = Message::select('messages.*', 'users.avatar', 'users.name')
-            ->join('users', 'users.id', 'messages.user_id')
-            ->orderBy('messages.created_at','DESC')
-            ->get();
+    protected $request;
 
-            return view('chat')->with([
-                'data' => $data
-        ]);
+    public function __construct(Request $request)
+    
+   {
 
-        }
+        $this->request= $request;
+   }
+   public function index()
+   {
+        return view('chat');
+   }
 
-        public function chat_send()
-        {
-            $this->request->merge([
-                'user_id' => Auth::user()->id
-            ]);
-
-            Message::create(
-                $this->request->except('_token')
-            );
-            return Redirect::route('app.chat');
-        }
+   public function send()
+   {
+        event(
+            new NewMessageSent(
+                $this->request->message
+            )
+        );
+        return back();
+   }
+ 
 }

@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
-class User
+use Auth, Redirect;
+class Users
 {
     /**
      * Handle an incoming request.

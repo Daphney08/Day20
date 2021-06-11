@@ -24,7 +24,7 @@
 <body>
     <div class="container">
         <div class="d-flex justify-content-center h-100">
-            <form method="post" action="{{ URL::route('app.login.verify') }}" class="col-4">
+            <form method="post" action="" class="col-4">
                 @csrf
 
                 @if(session('error'))
@@ -59,7 +59,7 @@
                             <div class="row align-items-center remember">
                                 <input type="checkbox">Remember Me
                             </div>
-                            <a href="{{ URL::route('app.registration') }}">Create an Account</a>
+                            <a href="">Create an Account</a>
                             <br>
                             <div class="form-group">
                                 <input type="submit" value="Login" class="btn float-right login_btn">
